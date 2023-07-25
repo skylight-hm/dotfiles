@@ -1,0 +1,35 @@
+[alias]
+	st = status -sb
+
+[init]
+	defaultBranch = main
+
+[user]
+	useConfigOnly = true
+	email = abcdefskylight@gmail.com
+	name = skylight-hm
+
+[http]
+	cookieFile = ~/.gitcookies
+	postBuffer = 655360000
+
+[pull]
+	ff = only
+
+[core]
+	excludesfile = ~/.gitignore_global
+	quotepath = false
+	longpaths = true
+	autocrlf = input
+	trustctime = false
+	attributesfile = ~/.attributes_global
+
+# Allow local customizations in the .gitconfig_local file
+[include]
+	path = ~/.gitconfig_local
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

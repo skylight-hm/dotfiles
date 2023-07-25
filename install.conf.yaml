@@ -5,7 +5,16 @@
 - clean: ['~']
 
 - link:
-    ~/.vimrc: vimrc
+    ~/.gitconfig: .gitconfig
+    ~/.gitignore_global: .gitignore_global
+    ~/.vimrc: .vimrc
+    ~/local.vimrc: local.vimrc
+    ~/.bashrc: .bashrc
+    ~/local.bashrc: local.bashrc
+    ~/.config/tmux: tmux
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.condarc: .condarc
+    ~/.config/pip/pip.conf: pip.conf
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
