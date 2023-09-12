@@ -62,6 +62,19 @@ def install_neovim(github_proxy, force=False):
         command = "rm -rf nvim-linux64.tar.gz"
         run(command)
     
+def install_node(github_proxy, force=False):
+    # check node exists 
+    if os.path.exists(f"{PATH_USER_BIN}/node") and force == False:
+        logger.info(f"node exsits at {PATH_USER_BIN}/node.")
+    # download node lts and install
+    else:
+        command = f"wget https://nodejs.org/dist/v18.17.1/node-v18.17.1-linux-x64.tar.xz"
+        run(command)
+        command = f"tar xf node-v18.17.1-linux-x64.tar.xz --strip-components 1 -C {PATH_USER}"
+        run(command)
+        command = "rm -rf node-v18.17.1-linux-x64.tar.xz"
+        run(command)
+    
 def main():
     parser = argparse.ArgumentParser(description="install app")
     parser.add_argument("--no-ghproxy", "-ng", action='store_false',
@@ -76,6 +89,7 @@ def main():
     install_tmux(github_proxy, force)
     install_btm(github_proxy, force)
     install_neovim(github_proxy, force)
+    install_node(github_proxy, force)
     
 if __name__ == "__main__":
     main()
